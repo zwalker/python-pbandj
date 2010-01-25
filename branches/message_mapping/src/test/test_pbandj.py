@@ -295,7 +295,7 @@ class ServiceTestCase(unittest.TestCase):
     def test_n_services(self):
         client1 = RpcService(proto.SimpleService_Stub, self.service_port,
                             "localhost")
-        client2 = RpcService(proto.SimpleService2_Stub, self.service_port,
+        client2 = RpcService(proto.SimpleService2_Stub, self.service_port + 1,
                             "localhost")
         test_msg = proto.Simple()
         test_msg.val = 1

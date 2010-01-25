@@ -177,7 +177,7 @@ def genMsg(msg_name, django_model_class, include=[], exclude=[], recurse_fk=True
                 fk_dj_model = field.rel.to
                 if isinstance(fk_dj_model, str):
                     # TODO: Handle ForeignKey supplied as a str
-                    print fk_dj_model
+                    #print fk_dj_model
                     assert False
                     #fk_dj_model = models.__dict__[fk_dj_model]
                 pb_type = genMsg(fk_dj_model.__name__, fk_dj_model, recurse_fk=recurse_fk)

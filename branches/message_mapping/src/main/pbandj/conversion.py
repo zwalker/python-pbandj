@@ -78,7 +78,6 @@ def _time_pb2dj(val, kwargs):
     return time(val.hour, val.minute, val.second)#, val.micro)
 
 def _m2m_pb2dj(val, kwargs):
-    print "IN _m2m_pb2dj *************************"
     output_type = kwargs['output_type']
     model_type = output_type.to
     if not output_type.through is None:
@@ -317,8 +316,8 @@ class Converter(object):
                                           field.pb_type,
                                           val, pb=pb, module=module)
                     except Exception, e:
-                        print field.name, field.dj_type, field.pb_type
-                        traceback.print_exc()
+                        #print field.name, field.dj_type, field.pb_type
+                        #traceback.print_exc()
                         raise e
                     if isinstance(field.pb_type, ProtocolBuffer.Message):
                         rep_field.add().CopyFrom(pb_val)
@@ -328,8 +327,8 @@ class Converter(object):
                 try:
                     val = getattr(obj, field.dj_type.name)
                 except Exception, e:
-                    print message.name, type(obj), field.name, type(field.dj_type.name), field.dj_type.name, field.dj_type, field.pb_type
-                    traceback.print_exc()
+                    #print message.name, type(obj), field.name, type(field.dj_type.name), field.dj_type.name, field.dj_type, field.pb_type
+                    #traceback.print_exc()
                     raise e
                 if  val != None and val != "":
                     # TODO: Check if field is repeated and if so get all objects
@@ -345,7 +344,7 @@ class Converter(object):
                         try:
                             setattr(protoMsg, field.name, pb_val)
                         except Exception, e:
-                            print field.name, field.dj_type, field.pb_type, val, val.pk, val.fk_test,  pb_val
-                            traceback.print_exc()
+                            #print field.name, field.dj_type, field.pb_type, val, val.pk, val.fk_test,  pb_val
+                            #traceback.print_exc()
                             raise e
         return protoMsg
